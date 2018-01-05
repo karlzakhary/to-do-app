@@ -1,8 +1,7 @@
 import { TodoApi } from "../../api/todoApi";
 
 
-// These are the action type constants. Ordered by CRUD order. 
-// There is a pattern of Action, Action_Success, Action_Error action types for the Async actions. 
+
 
 
 

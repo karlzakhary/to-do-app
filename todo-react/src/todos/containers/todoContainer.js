@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux'
 import { PropTypes } from 'prop-types'
 import TodoTable from '../components/todoTable';
+import CompleteTodoTable from '../components/completeTodoTable';
 
 
 
@@ -44,6 +45,7 @@ export class TodoContainer extends Component {
 
     render() {
         return (
+            <div>
             <div className="todo-container">
                 <TodoTable
                     todos={this.props.todos}
@@ -55,23 +57,16 @@ export class TodoContainer extends Component {
                     deleteTodo = {this.deleteTodo}
                 />
             </div>
-        );
-    }
-    render() {
-        return (
             <div className="todo-container">
-                <TodoTable
+                <CompleteTodoTable
                     todos={this.props.todos}
-                    createTodo={this.createTodo}
-                    startEditing={this.startEditing}
-                    cancelEditing={this.cancelEditing}
-                    editTodo={this.editTodo}
-                    completeTodo = {this.completeTodo}
-                    deleteTodo = {this.deleteTodo}
+                   
                 />
+            </div>
             </div>
         );
     }
+    
 }
 
 // Define the property types of this Container Component

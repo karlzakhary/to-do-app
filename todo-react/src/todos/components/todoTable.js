@@ -3,9 +3,9 @@ import React, {Component} from 'react';
 import {Button, Icon, Label, Menu, Table} from 'semantic-ui-react'
 import TodoRow from './todoRow'
 import EditTodo from './editTodo'
+import CompleteTodoRow from './completeTodo'
 
 
-// TodoTable is a Stateless component
 
 const TodoTable = (props) => {
     return (
@@ -14,9 +14,12 @@ const TodoTable = (props) => {
             <Table.Header>
                 <Table.Row>
                     <Table.HeaderCell>Title</Table.HeaderCell>
+                    <Table.HeaderCell>Priority</Table.HeaderCell>
                     <Table.HeaderCell>Description</Table.HeaderCell>
                     <Table.HeaderCell>Date</Table.HeaderCell>
                     <Table.HeaderCell>Options</Table.HeaderCell>
+                    
+
                 </Table.Row>
             </Table.Header>
 
@@ -28,7 +31,6 @@ const TodoTable = (props) => {
                     .todos
                     .map(t => {
 
-                        // If the todo is being edited, EditTodo Component is rendered here
 
                         if (t.editing) {
                             return <EditTodo
@@ -38,7 +40,6 @@ const TodoTable = (props) => {
                                 todo={t}/>
                         } else {
 
-                            // Is the todo is not being edited the TodoRow stateless component is returned
 
                             return <TodoRow
                                 todo={t}

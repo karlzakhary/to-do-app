@@ -3,8 +3,6 @@ import React, {Component} from 'react';
 import {Button, Icon, Label, Menu, Table} from 'semantic-ui-react'
 import {Input} from 'semantic-ui-react'
 
-//Import moment library for React Datepicker
-
 import moment from 'moment';
 
 import DatePicker from 'react-datepicker';
@@ -28,14 +26,12 @@ class EditTodo extends Component {
         }
     }
 
-    //Initializes a Empty Todo Object
 
     emptyTodo = () => {
-        return {title: "", description: "", date: moment()}
+        return {title: "", priority: "", description: "", date: moment()}
     }
 
 
-    // Input change handling methods
 
     changeNewTitle = (event) => {
         this.setState({title: event.target.value})
@@ -48,8 +44,11 @@ class EditTodo extends Component {
     changeNewDate = (event) => {
         this.setState({date: event})
     }
+    
+    changeNewPriority = (event) => {
+        this.setState({priority: event.target.value})
+    }
 
-    // Form submission methods
 
     createTodo = (event) => {
         this.resetTodo()
@@ -60,16 +59,14 @@ class EditTodo extends Component {
     }
 
 
-    // Modifying the inputs indirectly methods
 
     resetTodo = () => {
-        this.setState({title: "", description: "", date: moment()})
+        this.setState({title: "", priority: "", description: "", date: moment() })
     }
     cancelEditing = () => {
         this.props.cancelEditing();
     }
 
-    // Convert the date to moment object for the React DatePicker
 
     getDateForDatePicker() {
         return moment(this.state.date)
@@ -89,6 +86,13 @@ class EditTodo extends Component {
                         placeholder='Title'
                         value={this.state.title}
                         onChange={this.changeNewTitle}/>
+                </Table.Cell>
+
+                <Table.Cell>
+                <Input                        
+                        placeholder='Priority'
+                        value={this.state.priority}
+                        onChange={this.changeNewPriority}/>
                 </Table.Cell>
 
                 <Table.Cell>
@@ -125,7 +129,6 @@ class EditTodo extends Component {
 export default EditTodo;
 
 
-// The option component decides the component usage
 
 const Options = (props) => {
     if (props.todo && props.todo.editing) {
@@ -135,8 +138,7 @@ const Options = (props) => {
     }
 }
 
-// The two local components - EditOptions and AddOptions simply maps their events 
-// to the state events of their parent compoent through the props
+
 
 
 const EditOptions = (props) => {
